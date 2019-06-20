@@ -14,7 +14,45 @@ Cart.prototype.addItem = function(product, quantity) {
 
 Cart.prototype.saveToLocalStorage = function() {
   // DONE: Fill in this instance method to save the contents of the cart to localStorage
-  localStorage.setItem('cart', JSON.stringify(this.items));
+  // get items from cart
+
+  if (localStorage.getItem('cart')) {
+    var tempCart = JSON.parse(localStorage.getItem('cart'));
+    // add new items to cart
+    // 0 -> new item, 1 -> update required, 2 -> duplicate
+    var flag = 0;
+    var j, i;
+
+    for (i = 0; i < tempCart.length; i++) {
+      for (j = 0; j < this.items.length; j++) {
+        if (this.items[j].product === tempCart[i].product) {
+          if (this.items[j].quantity !== tempCart[i].quantity) {
+            flag = 1;
+            // this.items[j].quantity += tempCart[i].quantity;
+            break;
+          }
+        } else {
+          // this.addItem(tempCart[i].product, tempCart[i].quantity);
+          flag = 2;
+        }
+      }
+      switch (flag) {
+      case 0:
+        this.addItem(tempCart[i].product, tempCart[i].quantity);
+        break;
+      case 1:
+        this.items[j].quantity += tempCart[i].quantity;
+        break;
+      case 2:
+        break;
+      default:
+      }
+    }
+
+    localStorage.setItem('cart', JSON.stringify(this.items));
+  } else {
+    localStorage.setItem('cart', JSON.stringify(this.items));
+  }
 };
 
 Cart.prototype.removeItem = function(item) {
