@@ -48,7 +48,6 @@ Cart.prototype.saveToLocalStorage = function() {
       default:
       }
     }
-
     localStorage.setItem('cart', JSON.stringify(this.items));
   } else {
     localStorage.setItem('cart', JSON.stringify(this.items));
