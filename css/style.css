@@ -1,1 +1,142 @@
-/* TODO: Make it awesome */
+/* SEMI-DONE Make it awesome */
+
+* {box-sizing: border-box;}
+
+body {
+  padding: 0 30px; 
+  max-width: 960px; 
+  margin: 0 auto; 
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2;
+  background-color:#ffffff; 
+}
+
+body > header {
+  padding: 0 30px 50px 30px; 
+  margin-bottom: 40px; 
+  border-bottom: 4px #f3db57 double; 
+}
+body > header h1::before{
+  content: url(https://static.thenounproject.com/png/19255-200.png);
+  display: block;
+  opacity: 0.25;
+}
+
+
+h1 {
+  text-align: center; 
+  font-size: 30px; 
+  margin-bottom: 30px; 
+  color: #1f446c;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+nav ul {
+  text-align: center; 
+}
+
+nav li {
+  display: inline-block; 
+  background-color: #548eaf ; 
+  color: #f7f5e4; 
+  padding: 8px 15px; 
+  border-radius: 8px; 
+  margin: 0 5px; 
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+nav li:hover{
+  background-color:#0e6394;
+}
+
+nav li a {
+  color: #ffffff; 
+  text-decoration: none; 
+}
+
+.card h1{
+  color: #1f446c;
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.col-1 {width: 65%; float: left; padding-right: 40px;}
+.col-2 {width: 35%; background-color: #f6e9c7; float: left; border-radius: 10px; padding: 20px; }
+
+footer{
+  clear: both;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  border-top: 4px #f3db57 double;
+  padding-top: 20px; 
+  color: #868686;
+  font-size: 12px;  
+}
+
+main {
+  margin-bottom: 40px;
+  overflow: auto; }
+
+ol li {
+  list-style: decimal;
+  margin-left: 30px; 
+  margin-bottom: 15px; 
+}
+
+form {
+  font-size: 14px; 
+}
+
+label {
+  display: block;
+  margin-bottom: 15px; 
+}
+
+legend {
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  padding-bottom: 5px; 
+  margin-bottom: 15px; 
+  border-bottom: #ffffff solid 3px; 
+  color: #1f446c;
+  text-transform: uppercase;
+}
+
+fieldset > input{
+  display: inline-block; 
+  background-color: #f58235; 
+  color: #ffffff; 
+  padding: 6px 12px; 
+  border-radius: 8px; 
+  margin: 0 5px; 
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+fieldset > input:hover{
+  background-color:#e75d00;
+}
+
+#itemCount {
+  font-weight: bold;
+  color: #f3db57;
+  letter-spacing: 0px;
+  margin-left: 3px;
+}
+
+#cartContents {
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+table#cart {
+  width: 100%
+}
