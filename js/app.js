@@ -15,48 +15,38 @@ Cart.prototype.addItem = function(product, quantity) {
 Cart.prototype.saveToLocalStorage = function() {
   // DONE: Fill in this instance method to save the contents of the cart to localStorage
   // get items from cart
-
+  var flag = 0;
   if (localStorage.getItem('cart')) {
-    var tempCart = JSON.parse(localStorage.getItem('cart'));
-    // add new items to cart
-    // 0 -> new item, 1 -> update required, 2 -> duplicate
-    var flag = 0;
-    var j, i;
-
-    for (i = 0; i < tempCart.length; i++) {
-      for (j = 0; j < this.items.length; j++) {
-        if (this.items[j].product === tempCart[i].product) {
-          if (this.items[j].quantity !== tempCart[i].quantity) {
-            flag = 1;
-            // this.items[j].quantity += tempCart[i].quantity;
-            break;
-          }
-        } else {
-          // this.addItem(tempCart[i].product, tempCart[i].quantity);
-          flag = 2;
+    console.log(this.items);
+    var tempCart = new Cart(JSON.parse(localStorage.getItem('cart')));
+    for(var i = 0; i < tempCart.items.length; i++) {
+      flag = 0;
+      for(var j = 0; j < this.items.length; j++) {
+        if(tempCart.items[i].product === this.items[j].product) {
+          flag = 1;
+          break;
         }
       }
-      switch (flag) {
-      case 0:
-        this.addItem(tempCart[i].product, tempCart[i].quantity);
-        break;
-      case 1:
-        this.items[j].quantity += tempCart[i].quantity;
-        break;
-      case 2:
-        break;
-      default:
+      if(flag === 0) {
+        this.items.push(tempCart.items[i]);
       }
     }
-    localStorage.setItem('cart', JSON.stringify(this.items));
-  } else {
-    localStorage.setItem('cart', JSON.stringify(this.items));
+    // add new items to cart
   }
+  localStorage.setItem('cart', JSON.stringify(this.items));
 };
 
 Cart.prototype.removeItem = function(item) {
-  // TODO: Fill in this instance method to remove one item from the cart.
+  // DONE: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
+  var found;
+  for(var i = 0; i < this.items.length; i++) {
+    if(this.items[i].product === item) {
+      found = i;
+      break;
+    }
+  }
+  this.items.splice(found,1);
 };
 
 var CartItem = function(product, quantity) {
