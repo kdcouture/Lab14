@@ -15,25 +15,31 @@ Cart.prototype.addItem = function(product, quantity) {
 Cart.prototype.saveToLocalStorage = function() {
   // DONE: Fill in this instance method to save the contents of the cart to localStorage
   // get items from cart
-  var flag = 0;
+  var flag = 0, count = 0;
   if (localStorage.getItem('cart')) {
     console.log(this.items);
     var tempCart = new Cart(JSON.parse(localStorage.getItem('cart')));
     for(var i = 0; i < tempCart.items.length; i++) {
       flag = 0;
-      for(var j = 0; j < this.items.length; j++) {
-        if(tempCart.items[i].product === this.items[j].product) {
-          flag = 1;
-          break;
-        }
-      }
-      if(flag === 0) {
-        this.items.push(tempCart.items[i]);
+      count = 0;
+      if(tempCart.items[i].product === this.items[this.items.length-1].product) {
+        flag = 1;
+        count = this.items[this.items.length-1].quantity;
+        break;
       }
     }
+    if(flag === 0) {
+      tempCart.items.push(this.items[this.items.length-1]);
+    }
+    else if(flag === 1) {
+      tempCart.items[i].quantity += count;
+    }
     // add new items to cart
+    localStorage.setItem('cart', JSON.stringify(tempCart.items));
   }
-  localStorage.setItem('cart', JSON.stringify(this.items));
+  else {
+    localStorage.setItem('cart', JSON.stringify(this.items));
+  }
 };
 
 Cart.prototype.removeItem = function(item) {
