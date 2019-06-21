@@ -137,6 +137,19 @@ fieldset > input:hover{
   margin-top: 15px;
 }
 
+
 table#cart {
-  width: 100%
+  width: 100%;
+}
+ th, td{
+  padding: 5px; 
+  background-color: #f6e9c7;
+  text-align: left;
+  border: #ffffff 2px solid;
+}
+
+th {
+  background-color: #3f7b9e;
+  color: #ffffff;
+  font-weight: bold;
 }
