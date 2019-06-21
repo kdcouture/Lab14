@@ -48,8 +48,9 @@ function addSelectedItemToCart() {
 function updateCounter() {
   var navCount = document.getElementById('itemCount');
   var totalCount = 0;
-  for (var i = 0; i < cart.items.length; i++) {
-    totalCount += cart.items[i].quantity;
+  var localStoreCart = JSON.parse(localStorage['cart']);
+  for(var j = 0; j < localStoreCart.length; j++) {
+    totalCount += parseInt(localStoreCart[j].quantity);
   }
   navCount.textContent = totalCount;
 }
